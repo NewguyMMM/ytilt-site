@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ytilt – The Good Stuff. Fast.</title>
+  <title>ytilt – Binge Less. Learn More.</title>
   <style>
+    :root {
+      color-scheme: light dark;
+    }
     body {
       font-family: sans-serif;
       margin: 0;
@@ -13,6 +16,15 @@
       background: #f4f4f4;
       color: #333;
     }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #121212;
+        color: #ddd;
+      }
+      header, section, footer {
+        background: #1e1e1e;
+      }
+    }
     header, section, footer {
       padding: 2rem;
       max-width: 800px;
@@ -20,6 +32,11 @@
     }
     h1, h2, h3 {
       color: #222;
+    }
+    @media (prefers-color-scheme: dark) {
+      h1, h2, h3 {
+        color: #fff;
+      }
     }
     .cta-buttons a {
       display: inline-block;
@@ -46,6 +63,12 @@
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
+    @media (prefers-color-scheme: dark) {
+      .plan {
+        background: #2a2a2a;
+        box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+      }
+    }
     .plan h3 {
       margin-top: 0;
     }
@@ -64,15 +87,48 @@
       font-size: 0.9rem;
       color: #666;
     }
+    @media (prefers-color-scheme: dark) {
+      footer {
+        color: #aaa;
+      }
+    }
+    .logo {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 120px;
+      transition: transform 0.3s ease-in-out;
+      z-index: 999;
+    }
+    .logo.shrink {
+      transform: scale(0.85) rotate(-5deg);
+    }
+    @media (max-width: 600px) {
+      .logo {
+        width: 80px;
+      }
+    }
   </style>
+  <script>
+    window.addEventListener('scroll', () => {
+      const logo = document.querySelector('.logo');
+      if (window.scrollY > 50) {
+        logo.classList.add('shrink');
+      } else {
+        logo.classList.remove('shrink');
+      }
+    });
+  </script>
 </head>
 <body>
+
+  <img class="logo" src="https://ytilt.com/logo.png" alt="ytilt logo">
 
   <header>
     <h1>Binge Less. Learn More!</h1>
     <p>Paste a YouTube link or ask to learn something. We’ll summarize and deliver it in minutes.</p>
     <div class="cta-buttons">
-      <a href=" <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform">Summarize a Video</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform">Summarize a Video</a>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform#learn" class="secondary">Teach Me a Topic</a>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform#track" class="secondary">Track My Favorite Channels</a>
     </div>
@@ -125,6 +181,5 @@
     <p>© 2025 ytilt. All rights reserved.</p>
     <p><a href="#pricing">View Pricing</a> | <a href="#">Privacy Policy</a></p>
   </footer>
-
 </body>
 </html>
