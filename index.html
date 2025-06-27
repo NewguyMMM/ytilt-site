@@ -1,93 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ytilt – Smarter YouTube Summaries</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ytilt – Smarter Video. Less Time.</title>
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: sans-serif;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
-      color: #222;
       line-height: 1.6;
+      background: #f4f4f4;
+      color: #333;
     }
-    header {
-      background: #111;
-      color: #fff;
+    header, section, footer {
       padding: 2rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.1rem;
-    }
-    .container {
       max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      margin: auto;
     }
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
+    h1, h2, h3 {
+      color: #222;
     }
-    p {
-      margin-bottom: 1.5rem;
-    }
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .btn-group a {
-      display: block;
-      text-align: center;
-      padding: 0.75rem 1rem;
-      border-radius: 5px;
-      background: #0070f3;
-      color: #fff;
+    .cta-buttons a {
+      display: inline-block;
+      margin: 1rem 1rem 0 0;
+      padding: 0.75rem 1.5rem;
+      background: #0051ff;
+      color: white;
       text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s ease;
+      border-radius: 4px;
     }
-    .btn-group a.secondary {
+    .cta-buttons .secondary {
       background: #555;
     }
-    .btn-group a:hover {
-      background: #0055c1;
+    .pricing-table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .plan {
+      flex: 1;
+      min-width: 200px;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .plan h3 {
+      margin-top: 0;
+    }
+    .plan a.btn {
+      display: block;
+      margin-top: 1rem;
+      text-align: center;
+      background: #007aff;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 4px;
+      text-decoration: none;
     }
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      color: #666;
       font-size: 0.9rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Ytilt</h1>
-    <p>Your AI-powered tool for smarter YouTube learning</p>
-  </header>
-  <div class="container">
-    <h2>What would you like to do?</h2>
-    <div class="btn-group">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform">Summarize a Video</a>
+    <h1>Smarter Video. Less Time.</h1>
+    <p>Paste a YouTube link or ask to learn something. We’ll summarize and deliver it in minutes.</p>
+    <div class="cta-buttons">
+      <a href=" <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform">Summarize a Video</a>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform#learn" class="secondary">Teach Me a Topic</a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform#track" class="secondary">Track My Favorite Channels</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform#track" class="secondary">Track My Favorite Channels</a>">Summarize a Video</a>
+      <a href="https://your-google-form-link.com#learn" class="secondary">Teach Me a Topic</a>
     </div>
-  </div>
+  </header>
+
+  <section>
+    <h2>How Ytilt Works</h2>
+    <ol>
+      <li>📥 Submit a YouTube video or topic</li>
+      <li>🧠 We summarize or curate top video lessons</li>
+      <li>📩 You get a clean email summary with takeaways (and audio if you're Premium)</li>
+    </ol>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing Plans</h2>
+    <div class="pricing-table">
+      <div class="plan">
+        <h3>Free</h3>
+        <p>$0/month</p>
+        <ul>
+          <li>5 summaries/month</li>
+          <li>Topic learning packs</li>
+          <li>Ad-supported</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Starter</h3>
+        <p>$10/month</p>
+        <ul>
+          <li>30 summaries/month</li>
+          <li>5 voiceover audio summaries</li>
+        </ul>
+        <a href="https://buy.stripe.com/test_00FakeStripeLink10" class="btn">Subscribe</a>
+      </div>
+      <div class="plan">
+        <h3>Creator Pro</h3>
+        <p>$30/month</p>
+        <ul>
+          <li>100 summaries/month</li>
+          <li>20 voiceover summaries</li>
+          <li>Early access features</li>
+        </ul>
+        <a href="https://buy.stripe.com/test_00FakeStripeLink30" class="btn">Subscribe</a>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    &copy; 2025 Ytilt. Built with AI for curious minds.
+    <p>© 2025 Ytilt. All rights reserved.</p>
+    <p><a href="#pricing">View Pricing</a> | <a href="#">Privacy Policy</a></p>
   </footer>
+
 </body>
 </html>
