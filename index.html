@@ -16,15 +16,6 @@
       background: #fefefe;
       color: #333;
     }
-    @media (prefers-color-scheme: dark) {
-      body {
-        background: #121212;
-        color: #ddd;
-      }
-      header, section, footer {
-        background: #1e1e1e;
-      }
-    }
     header, section, footer {
       padding: 2rem;
       max-width: 800px;
@@ -33,36 +24,23 @@
     h1, h2, h3 {
       color: #222;
     }
-    @media (prefers-color-scheme: dark) {
-      h1, h2, h3 {
-        color: #fff;
-      }
-    }
-    .cta-buttons button {
+    .cta-buttons a {
       display: inline-block;
       margin: 1rem 1rem 0 0;
       padding: 0.75rem 1.5rem;
       background: #0051ff;
       color: white;
-      border: none;
+      text-decoration: none;
       border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
     }
     .cta-buttons .secondary {
       background: #555;
     }
     .form-container {
       margin-top: 2rem;
-      display: none;
-    }
-    .form-container.active {
-      display: block;
-    }
-    iframe {
-      width: 100%;
-      max-width: 640px;
-      border: none;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
     }
     .logo-container {
       display: flex;
@@ -73,51 +51,74 @@
     .logo-container img {
       width: 360px;
       max-width: 100%;
+      cursor: pointer;
     }
     @media (max-width: 600px) {
       .logo-container img {
         width: 240px;
       }
     }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    footer a {
+      color: #0051ff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .thank-you-message {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+    }
   </style>
   <script>
     function showForm(formId) {
-      document.querySelectorAll('.form-container').forEach(fc => fc.classList.remove('active'));
-      document.getElementById(formId).classList.add('active');
+      document.getElementById('videoForm').style.display = 'none';
+      document.getElementById('topicForm').style.display = 'none';
+      document.getElementById('trackForm').style.display = 'none';
+      document.getElementById(formId).style.display = 'block';
+    }
+    function goHome() {
+      window.location.href = '/';
     }
   </script>
 </head>
 <body>
 
   <div class="logo-container">
-    <img src="https://ytilt.com/logo.png" alt="ytilt logo">
+    <img src="https://ytilt.com/logo.png" alt="ytilt logo" onclick="goHome()">
   </div>
 
   <header>
     <h1>Binge Less. Learn More!</h1>
     <p>Paste a YouTube or Podcast link—or ask to learn something. We’ll summarize and deliver it in minutes.</p>
     <div class="cta-buttons">
-      <button onclick="showForm('form1')">Summarize a Video or Podcast</button>
-      <button onclick="showForm('form2')" class="secondary">Teach Me a Topic</button>
-      <button onclick="showForm('form3')" class="secondary">Track My Favorite Channels & Podcasts</button>
+      <a href="#" onclick="showForm('videoForm')">Summarize a Video or Podcast</a>
+      <a href="#" class="secondary" onclick="showForm('topicForm')">Teach Me a Topic</a>
+      <a href="#" class="secondary" onclick="showForm('trackForm')">Track My Favorite Channels & Podcasts</a>
     </div>
   </header>
 
-  <section id="form-area">
-    <div id="form1" class="form-container">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform?embedded=true" height="1008" marginheight="0" marginwidth="0">Loading…</iframe>
+  <section>
+    <div class="form-container" id="videoForm" style="display:none">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform?embedded=true" width="100%" height="1100" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
-    <div id="form2" class="form-container">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgdJBY1b1rp7olQmPz0PI2-h_CJ7FFoI_Okch4BY68v0qjXg/viewform?embedded=true" height="1008" marginheight="0" marginwidth="0">Loading…</iframe>
+    <div class="form-container" id="topicForm" style="display:none">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgdJBY1b1rp7olQmPz0PI2-h_CJ7FFoI_Okch4BY68v0qjXg/viewform?embedded=true" width="100%" height="1100" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
-    <div id="form3" class="form-container">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvVpA4ja1ZvL_uO21fudmTyrTG4Fh5swGI_4OGQ5Wmi8-S5Q/viewform?embedded=true" height="2739" marginheight="0" marginwidth="0">Loading…</iframe>
+    <div class="form-container" id="trackForm" style="display:none">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvVpA4ja1ZvL_uO21fudmTyrTG4Fh5swGI_4OGQ5Wmi8-S5Q/viewform?embedded=true" width="100%" height="2800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
   </section>
 
   <footer>
     <p>© 2025 ytilt. All rights reserved.</p>
+    <a href="mailto:advertise@ytilt.com">Advertise with Us</a>
+    <a href="mailto:contact@ytilt.com">Contact Us</a>
   </footer>
-
 </body>
 </html>
+
