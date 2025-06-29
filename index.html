@@ -38,60 +38,31 @@
         color: #fff;
       }
     }
-    .cta-buttons a {
+    .cta-buttons button {
       display: inline-block;
       margin: 1rem 1rem 0 0;
       padding: 0.75rem 1.5rem;
       background: #0051ff;
       color: white;
-      text-decoration: none;
+      border: none;
       border-radius: 4px;
       cursor: pointer;
+      font-size: 1rem;
     }
     .cta-buttons .secondary {
       background: #555;
     }
-    .pricing-table {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
+    .form-container {
+      margin-top: 2rem;
+      display: none;
     }
-    .plan {
-      flex: 1;
-      min-width: 200px;
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    @media (prefers-color-scheme: dark) {
-      .plan {
-        background: #2a2a2a;
-        box-shadow: 0 2px 8px rgba(255,255,255,0.05);
-      }
-    }
-    .plan h3 {
-      margin-top: 0;
-    }
-    .plan a.btn {
+    .form-container.active {
       display: block;
-      margin-top: 1rem;
-      text-align: center;
-      background: #007aff;
-      color: white;
-      padding: 0.5rem;
-      border-radius: 4px;
-      text-decoration: none;
     }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    @media (prefers-color-scheme: dark) {
-      footer {
-        color: #aaa;
-      }
+    iframe {
+      width: 100%;
+      max-width: 640px;
+      border: none;
     }
     .logo-container {
       display: flex;
@@ -108,30 +79,11 @@
         width: 240px;
       }
     }
-    .form-container {
-      display: none;
-      margin-top: 2rem;
-      padding: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background-color: #fff;
-    }
-    iframe {
-      width: 100%;
-      height: 1000px;
-      border: none;
-    }
   </style>
   <script>
-    function showForm(type) {
-      const container = document.getElementById('form-embed');
-      const iframe = document.getElementById('form-frame');
-      let url = 'https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform';
-      if (type === 'learn') url += '#learn';
-      if (type === 'track') url += '#track';
-      iframe.src = url;
-      container.style.display = 'block';
-      container.scrollIntoView({ behavior: 'smooth' });
+    function showForm(formId) {
+      document.querySelectorAll('.form-container').forEach(fc => fc.classList.remove('active'));
+      document.getElementById(formId).classList.add('active');
     }
   </script>
 </head>
@@ -145,62 +97,27 @@
     <h1>Binge Less. Learn More!</h1>
     <p>Paste a YouTube or Podcast link—or ask to learn something. We’ll summarize and deliver it in minutes.</p>
     <div class="cta-buttons">
-      <a onclick="showForm('video')">Summarize a Video or Podcast</a>
-      <a onclick="showForm('learn')" class="secondary">Teach Me a Topic</a>
-      <a onclick="showForm('track')" class="secondary">Track My Favorite Channels & Podcasts</a>
+      <button onclick="showForm('form1')">Summarize a Video or Podcast</button>
+      <button onclick="showForm('form2')" class="secondary">Teach Me a Topic</button>
+      <button onclick="showForm('form3')" class="secondary">Track My Favorite Channels & Podcasts</button>
     </div>
   </header>
 
-  <div class="form-container" id="form-embed">
-    <iframe id="form-frame" src="" allowfullscreen></iframe>
-  </div>
-
-  <section>
-    <h2>How ytilt Works</h2>
-    <ol>
-      <li>📥 Submit a YouTube video, podcast, or topic</li>
-      <li>🧠 We summarize or curate the best content on the subject</li>
-      <li>📩 You get a clean email summary with takeaways (and audio if you're Premium)</li>
-    </ol>
-  </section>
-
-  <section id="pricing">
-    <h2>Pricing Plans</h2>
-    <div class="pricing-table">
-      <div class="plan">
-        <h3>Free</h3>
-        <p>$0/month</p>
-        <ul>
-          <li>5 summaries/month</li>
-          <li>Topic learning packs</li>
-          <li>Ad-supported</li>
-        </ul>
-      </div>
-      <div class="plan">
-        <h3>Starter</h3>
-        <p>$10/month</p>
-        <ul>
-          <li>30 summaries/month</li>
-          <li>5 voiceover audio summaries</li>
-        </ul>
-        <a href="https://buy.stripe.com/test_00FakeStripeLink10" class="btn">Subscribe</a>
-      </div>
-      <div class="plan">
-        <h3>Creator Pro</h3>
-        <p>$30/month</p>
-        <ul>
-          <li>100 summaries/month</li>
-          <li>20 voiceover summaries</li>
-          <li>Early access features</li>
-        </ul>
-        <a href="https://buy.stripe.com/test_00FakeStripeLink30" class="btn">Subscribe</a>
-      </div>
+  <section id="form-area">
+    <div id="form1" class="form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform?embedded=true" height="1008" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+    <div id="form2" class="form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgdJBY1b1rp7olQmPz0PI2-h_CJ7FFoI_Okch4BY68v0qjXg/viewform?embedded=true" height="1008" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+    <div id="form3" class="form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvVpA4ja1ZvL_uO21fudmTyrTG4Fh5swGI_4OGQ5Wmi8-S5Q/viewform?embedded=true" height="2739" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
   </section>
 
   <footer>
     <p>© 2025 ytilt. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
-
