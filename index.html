@@ -38,17 +38,17 @@
         color: #fff;
       }
     }
-    .cta-buttons button {
+    .cta-buttons a {
       display: inline-block;
       margin: 1rem 1rem 0 0;
       padding: 0.75rem 1.5rem;
       background: #0051ff;
       color: white;
-      border: none;
+      text-decoration: none;
       border-radius: 4px;
       cursor: pointer;
     }
-    .cta-buttons button.secondary {
+    .cta-buttons .secondary {
       background: #555;
     }
     .pricing-table {
@@ -111,6 +111,10 @@
     .form-container {
       display: none;
       margin-top: 2rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
     }
     iframe {
       width: 100%;
@@ -119,11 +123,15 @@
     }
   </style>
   <script>
-    function showForm(anchor) {
-      const form = document.getElementById('form-embed');
-      form.src = 'https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform' + anchor;
-      document.querySelector('.form-container').style.display = 'block';
-      window.scrollTo({ top: document.querySelector('.form-container').offsetTop, behavior: 'smooth' });
+    function showForm(type) {
+      const container = document.getElementById('form-embed');
+      const iframe = document.getElementById('form-frame');
+      let url = 'https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform';
+      if (type === 'learn') url += '#learn';
+      if (type === 'track') url += '#track';
+      iframe.src = url;
+      container.style.display = 'block';
+      container.scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 </head>
@@ -137,14 +145,14 @@
     <h1>Binge Less. Learn More!</h1>
     <p>Paste a YouTube or Podcast link—or ask to learn something. We’ll summarize and deliver it in minutes.</p>
     <div class="cta-buttons">
-      <button onclick="showForm('')">Summarize a Video or Podcast</button>
-      <button class="secondary" onclick="showForm('#learn')">Teach Me a Topic</button>
-      <button class="secondary" onclick="showForm('#track')">Track My Favorite Channels & Podcasts</button>
+      <a onclick="showForm('video')">Summarize a Video or Podcast</a>
+      <a onclick="showForm('learn')" class="secondary">Teach Me a Topic</a>
+      <a onclick="showForm('track')" class="secondary">Track My Favorite Channels & Podcasts</a>
     </div>
   </header>
 
-  <div class="form-container">
-    <iframe id="form-embed" src="" allowfullscreen></iframe>
+  <div class="form-container" id="form-embed">
+    <iframe id="form-frame" src="" allowfullscreen></iframe>
   </div>
 
   <section>
@@ -195,3 +203,4 @@
   </footer>
 </body>
 </html>
+
