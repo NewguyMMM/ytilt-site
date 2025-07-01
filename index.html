@@ -8,6 +8,9 @@
     :root {
       color-scheme: light dark;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: sans-serif;
       margin: 0;
@@ -16,6 +19,15 @@
       background: #fefefe;
       color: #333;
     }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #121212;
+        color: #ddd;
+      }
+      header, section, footer {
+        background: #1e1e1e;
+      }
+    }
     header, section, footer {
       padding: 2rem;
       max-width: 800px;
@@ -23,6 +35,11 @@
     }
     h1, h2, h3 {
       color: #222;
+    }
+    @media (prefers-color-scheme: dark) {
+      h1, h2, h3 {
+        color: #fff;
+      }
     }
     .cta-buttons a {
       display: inline-block;
@@ -33,14 +50,47 @@
       text-decoration: none;
       border-radius: 4px;
     }
-    .cta-buttons .secondary {
-      background: #555;
+    .pricing-table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    .form-container {
-      margin-top: 2rem;
-      border: 1px solid #ccc;
+    .plan {
+      flex: 1;
+      min-width: 200px;
+      background: white;
+      padding: 1.5rem;
       border-radius: 8px;
-      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    @media (prefers-color-scheme: dark) {
+      .plan {
+        background: #2a2a2a;
+        box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+      }
+    }
+    .plan h3 {
+      margin-top: 0;
+    }
+    .plan a.btn {
+      display: block;
+      margin-top: 1rem;
+      text-align: center;
+      background: #007aff;
+      color: white;
+      padding: 0.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    @media (prefers-color-scheme: dark) {
+      footer {
+        color: #aaa;
+      }
     }
     .logo-container {
       display: flex;
@@ -58,66 +108,91 @@
         width: 240px;
       }
     }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    footer a {
-      color: #0051ff;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-    .thank-you-message {
-      text-align: center;
-      font-size: 1.2rem;
-      margin-top: 2rem;
+    iframe {
+      display: block;
+      margin: 2rem auto;
+      max-width: 100%;
+      border: none;
     }
   </style>
-  <script>
-    function showForm(formId) {
-      document.getElementById('videoForm').style.display = 'none';
-      document.getElementById('topicForm').style.display = 'none';
-      document.getElementById('trackForm').style.display = 'none';
-      document.getElementById(formId).style.display = 'block';
-    }
-    function goHome() {
-      window.location.href = '/';
-    }
-  </script>
 </head>
 <body>
 
-  <div class="logo-container">
-    <img src="https://ytilt.com/logo.png" alt="ytilt logo" onclick="goHome()">
+  <div class="logo-container" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+    <img src="https://ytilt.com/logo.png" alt="ytilt logo">
   </div>
 
-  <header>
+  <header id="top">
     <h1>Binge Less. Learn More!</h1>
     <p>Paste a YouTube or Podcast link—or ask to learn something. We’ll summarize and deliver it in minutes.</p>
     <div class="cta-buttons">
-      <a href="#" onclick="showForm('videoForm')">Summarize a Video or Podcast</a>
-      <a href="#" class="secondary" onclick="showForm('topicForm')">Teach Me a Topic</a>
-      <a href="#" class="secondary" onclick="showForm('trackForm')">Track My Favorite Channels & Podcasts</a>
+      <a href="#video-form">Summarize a Video or Podcast</a>
+      <a href="#topic-form">Teach Me a Topic</a>
+      <a href="#track-form">Track My Favorite Channels & Podcasts</a>
     </div>
   </header>
 
   <section>
-    <div class="form-container" id="videoForm" style="display:none">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform?embedded=true" width="100%" height="1100" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <h2>How ytilt Works</h2>
+    <ol>
+      <li>📥 Submit a YouTube video, podcast, or topic</li>
+      <li>🧠 We summarize or curate the best content on the subject</li>
+      <li>📩 You get a clean email summary with takeaways (and audio if you're Premium)</li>
+    </ol>
+  </section>
+
+  <section id="pricing">
+    <h2>Pricing Plans</h2>
+    <div class="pricing-table">
+      <div class="plan">
+        <h3>Free</h3>
+        <p>$0/month</p>
+        <ul>
+          <li>5 summaries/month</li>
+          <li>Topic learning packs</li>
+          <li>Ad-supported</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>Starter</h3>
+        <p>$10/month</p>
+        <ul>
+          <li>30 summaries/month</li>
+          <li>5 voiceover audio summaries</li>
+        </ul>
+        <a href="https://buy.stripe.com/test_00FakeStripeLink10" class="btn">Subscribe</a>
+      </div>
+      <div class="plan">
+        <h3>Creator Pro</h3>
+        <p>$30/month</p>
+        <ul>
+          <li>100 summaries/month</li>
+          <li>20 voiceover summaries</li>
+          <li>Early access features</li>
+        </ul>
+        <a href="https://buy.stripe.com/test_00FakeStripeLink30" class="btn">Subscribe</a>
+      </div>
     </div>
-    <div class="form-container" id="topicForm" style="display:none">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgdJBY1b1rp7olQmPz0PI2-h_CJ7FFoI_Okch4BY68v0qjXg/viewform?embedded=true" width="100%" height="1100" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </div>
-    <div class="form-container" id="trackForm" style="display:none">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvVpA4ja1ZvL_uO21fudmTyrTG4Fh5swGI_4OGQ5Wmi8-S5Q/viewform?embedded=true" width="100%" height="2800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </div>
+  </section>
+
+  <section id="video-form">
+    <h2>Summarize a Video or Podcast</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform?embedded=true" width="640" height="1008"></iframe>
+  </section>
+
+  <section id="topic-form">
+    <h2>Teach Me a Topic</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgdJBY1b1rp7olQmPz0PI2-h_CJ7FFoI_Okch4BY68v0qjXg/viewform?embedded=true" width="640" height="1008"></iframe>
+  </section>
+
+  <section id="track-form">
+    <h2>Track My Favorite Channels & Podcasts</h2>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvVpA4ja1ZvL_uO21fudmTyrTG4Fh5swGI_4OGQ5Wmi8-S5Q/viewform?embedded=true" width="640" height="2739"></iframe>
   </section>
 
   <footer>
     <p>© 2025 ytilt. All rights reserved.</p>
-    <a href="mailto:advertise@ytilt.com">Advertise with Us</a>
-    <a href="mailto:contact@ytilt.com">Contact Us</a>
+    <p><a href="mailto:contactus@ytilt.com">Contact Us</a> | <a href="mailto:advertisewithus@ytilt.com">Advertise With Us</a></p>
   </footer>
 </body>
 </html>
