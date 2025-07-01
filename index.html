@@ -5,17 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ytilt – Condense & Conquer.</title>
   <style>
-    :root {
-      color-scheme: light dark;
-    }
     body {
       font-family: sans-serif;
       margin: 0;
       padding: 0;
-      line-height: 1.6;
       background: #fefefe;
       color: #333;
-      scroll-behavior: smooth;
+      line-height: 1.6;
     }
     header, section, footer {
       padding: 2rem;
@@ -47,6 +43,9 @@
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
+    .plan h3 {
+      margin-top: 0;
+    }
     .plan a.btn {
       display: block;
       margin-top: 1rem;
@@ -59,21 +58,13 @@
     }
     .logo-container {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: flex-end;
+      align-items: flex-start;
+      margin-bottom: -2rem;
     }
     .logo-container img {
-      width: 300px;
+      width: 360px;
       max-width: 100%;
-    }
-    .logo-container a.home-link {
-      font-size: 1rem;
-      color: #0051ff;
-      text-decoration: none;
-    }
-    .form-section {
-      display: none;
-      margin-top: 2rem;
     }
     footer {
       text-align: center;
@@ -81,34 +72,41 @@
       color: #666;
     }
     footer a {
-      color: #0051ff;
-      text-decoration: none;
+      color: #007aff;
       margin: 0 0.5rem;
+      text-decoration: none;
+    }
+    .form-section {
+      display: none;
+      margin-top: 2rem;
+    }
+    iframe {
+      width: 100%;
+      border: none;
     }
   </style>
   <script>
     function showForm(id) {
-      document.getElementById('form1').style.display = 'none';
-      document.getElementById('form2').style.display = 'none';
-      document.getElementById('form3').style.display = 'none';
+      document.getElementById('form-summarize').style.display = 'none';
+      document.getElementById('form-topic').style.display = 'none';
+      document.getElementById('form-track').style.display = 'none';
       document.getElementById(id).style.display = 'block';
-      window.scrollTo({ top: document.getElementById(id).offsetTop - 20, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
 </head>
 <body>
   <div class="logo-container">
-    <a href="#top" class="home-link">Home</a>
     <img src="https://ytilt.com/logo.png" alt="ytilt logo">
   </div>
 
-  <header id="top">
+  <header>
     <h1>Binge Less. Learn More!</h1>
     <p>Paste a YouTube or Podcast link—or ask to learn something. We’ll summarize and deliver it in minutes.</p>
     <div class="cta-buttons">
-      <a href="#" onclick="showForm('form1')">Summarize a Video or Podcast</a>
-      <a href="#" onclick="showForm('form2')">Teach Me a Topic</a>
-      <a href="#" onclick="showForm('form3')">Track My Favorite Channels & Podcasts</a>
+      <a href="#" onclick="showForm('form-summarize')">Summarize a Video or Podcast</a>
+      <a href="#" onclick="showForm('form-topic')">Teach Me a Topic</a>
+      <a href="#" onclick="showForm('form-track')">Track My Favorite Channels & Podcasts</a>
     </div>
   </header>
 
@@ -119,16 +117,6 @@
       <li>🧠 We summarize or curate the best content on the subject</li>
       <li>📩 You get a clean email summary with takeaways (and audio if you're Premium)</li>
     </ol>
-  </section>
-
-  <section class="form-section" id="form1">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform?embedded=true" width="640" height="1008" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-  </section>
-  <section class="form-section" id="form2">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgdJBY1b1rp7olQmPz0PI2-h_CJ7FFoI_Okch4BY68v0qjXg/viewform?embedded=true" width="640" height="1008" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-  </section>
-  <section class="form-section" id="form3">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvVpA4ja1ZvL_uO21fudmTyrTG4Fh5swGI_4OGQ5Wmi8-S5Q/viewform?embedded=true" width="640" height="2739" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
   </section>
 
   <section id="pricing">
@@ -165,9 +153,23 @@
     </div>
   </section>
 
+  <div id="form-summarize" class="form-section">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdjbj-WNuX5oP8h-v9qMgKHwfEvYXR6Epk6By7tYQmUKrBFaQ/viewform?embedded=true" height="1008" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
+  <div id="form-topic" class="form-section">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScgdJBY1b1rp7olQmPz0PI2-h_CJ7FFoI_Okch4BY68v0qjXg/viewform?embedded=true" height="1008" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
+  <div id="form-track" class="form-section">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdvVpA4ja1ZvL_uO21fudmTyrTG4Fh5swGI_4OGQ5Wmi8-S5Q/viewform?embedded=true" height="2739" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
+
   <footer>
-    <p>© 2025 ytilt. All rights reserved. | <a href="mailto:contactus@ytilt.com">Contact Us</a> | <a href="mailto:advertisewithus@ytilt.com">Advertise With Us</a> | <a href="why.html">Why ytilt</a></p>
+    <p>© 2025 ytilt. All rights reserved.</p>
+    <p>
+      <a href="mailto:advertisewithus@ytilt.com">Advertise with us</a> |
+      <a href="mailto:contactus@ytilt.com">Contact us</a> |
+      <a href="/why.html">Why ytilt</a>
+    </p>
   </footer>
 </body>
 </html>
-
